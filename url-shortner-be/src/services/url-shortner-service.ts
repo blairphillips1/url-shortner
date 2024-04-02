@@ -17,11 +17,11 @@ export async function createShortURL(longUrl: string): Promise<string> {
   return shortURLGenerator(key);
 }
 
-function shortURLGenerator(key: string): string {
+export function shortURLGenerator(key: string): string {
   return `http://localhost:3000/${key}`;
 }
 
-function createBase64Key(longUrl: string): string {
+export function createBase64Key(longUrl: string): string {
   return crypto.createHash("shake256", { outputLength: 5 }).update(longUrl).digest("base64").replace('/', '');
 }
 
